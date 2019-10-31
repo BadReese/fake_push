@@ -269,12 +269,11 @@ static NSString * const ARGUMENT_KEY_RESULT_CUSTOMCONTENT = @"customContent";
 }
 
 // App 在前台弹通知需要调用这个接口
-- (void)xgPushUserNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler __IOS_AVAILABLE(10.0) {
-    [[XGPush defaultManager] reportXGNotificationInfo:notification.request.content.userInfo];
-    [self didReceiveRemoteNotification:notification.request.content.userInfo];
-    // completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
-    completionHandler();
-}
+// - (void)xgPushUserNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler __IOS_AVAILABLE(10.0) {
+//     [[XGPush defaultManager] reportXGNotificationInfo:notification.request.content.userInfo];
+//     [self didReceiveRemoteNotification:notification.request.content.userInfo];
+//     completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
+// }
 #endif
 
 -(void)xgPushDidRegisteredDeviceToken:(NSString *)deviceToken error:(NSError *)error {
