@@ -272,7 +272,8 @@ static NSString * const ARGUMENT_KEY_RESULT_CUSTOMCONTENT = @"customContent";
 - (void)xgPushUserNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler __IOS_AVAILABLE(10.0) {
     [[XGPush defaultManager] reportXGNotificationInfo:notification.request.content.userInfo];
     [self didReceiveRemoteNotification:notification.request.content.userInfo];
-    completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
+    // completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
+    completionHandler();
 }
 #endif
 
