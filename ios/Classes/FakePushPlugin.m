@@ -269,11 +269,12 @@ static NSString * const ARGUMENT_KEY_RESULT_CUSTOMCONTENT = @"customContent";
 }
 
 // App 在前台弹通知需要调用这个接口
-// - (void)xgPushUserNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler __IOS_AVAILABLE(10.0) {
-//     [[XGPush defaultManager] reportXGNotificationInfo:notification.request.content.userInfo];
-//     [self didReceiveRemoteNotification:notification.request.content.userInfo];
-//     completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
-// }
+- (void)xgPushUserNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler __IOS_AVAILABLE(10.0) {
+    [[XGPush defaultManager] reportXGNotificationInfo:notification.request.content.userInfo];
+    [self didReceiveRemoteNotification:notification.request.content.userInfo];
+    // completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
+    completionHandler(UNNotificationPresentationOptionNone); // 使静音 可以在推送里加入控制 决定在前台收到通知的时候是否弹窗
+}
 #endif
 
 -(void)xgPushDidRegisteredDeviceToken:(NSString *)deviceToken error:(NSError *)error {
